@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_screen_title">Weather</string>
+    <string name="home_screen_tab_name_1">Today</string>
+    <string name="home_screen_tab_name_2">Tomorrow</string>
+    <string name="wind_parameter_title">Wind</string>
+    <string name="humidity_parameter_title">Humidity</string>
+    <string name="low_temperature_parameter_title">Low</string>
+    <string name="hourly_forecast_block_title">Hourly Forecast</string>
+</resources>
