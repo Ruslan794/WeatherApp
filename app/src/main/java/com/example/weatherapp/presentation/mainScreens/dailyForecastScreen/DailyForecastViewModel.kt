@@ -1,6 +1,5 @@
-package com.example.weatherapp.presentation.viewModels
+package com.example.weatherapp.presentation.mainScreens.dailyForecastScreen
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import com.example.domain.models.City
 import com.example.domain.models.DayWeatherItem
 import com.example.domain.useCases.GetCurrentCityUseCase
 import com.example.domain.useCases.ShowDailyForecastUseCase
-import com.example.weatherapp.presentation.adapters.DailyWeatherAdapter
 import kotlinx.coroutines.launch
 
 

@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.adapters
+package com.example.weatherapp.presentation.mainScreens.dailyForecastScreen
 
 import android.content.Context
 import android.view.LayoutInflater

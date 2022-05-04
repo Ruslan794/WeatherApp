@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.fragments
+package com.example.weatherapp.presentation.mainScreens.homeScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import coil.load
 import com.example.weatherapp.R
-import com.example.weatherapp.presentation.viewModels.HomeScreenViewModel
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

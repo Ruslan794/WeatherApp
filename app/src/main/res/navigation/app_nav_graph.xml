@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.weatherapp.presentation.fragments.MainFragment"
+        android:name="com.example.weatherapp.presentation.mainScreens.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/loadingScreenFragment"
-        android:name="com.example.weatherapp.presentation.fragments.LoadingScreenFragment"
+        android:name="com.example.weatherapp.presentation.firstStartScreens.loadingScreen.LoadingScreenFragment"
         android:label="fragment_loading_screen"
         tools:layout="@layout/fragment_loading_screen" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
-        android:name="com.example.weatherapp.presentation.fragments.OnBoardingFragment"
+        android:name="com.example.weatherapp.presentation.firstStartScreens.onBoarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding" >
         <action

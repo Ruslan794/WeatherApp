@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.viewModels
+package com.example.weatherapp.presentation.mainScreens.searchScreen
 
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.domain.models.City
 import com.example.domain.useCases.ChangeCityUseCase
 import com.example.domain.useCases.GetRecentlySearchedCitiesUseCase
-import com.example.weatherapp.presentation.adapters.RecentlySearchedCitiesAdapter
+import com.example.weatherapp.presentation.common.CityAdapter
 import kotlinx.coroutines.launch
 
 
@@ -31,12 +31,13 @@ class SearchScreenViewModel(
 
     fun changeCity(cityName: String) {
         viewModelScope.launch {
-            _showCityChangeResultToast.value = when (changeCityUseCase.execute(cityName)) {
+            _showCityChangeResultToast.value = when (changeCityUseCase.execute(cityName.lowercase())) {
+                -1 -> -1
                 0 -> 0
                 1 -> 1
-                else -> -1
+                2 -> 2
+                else -> -2
             }
-
             updateData()
         }
     }
@@ -45,7 +46,7 @@ class SearchScreenViewModel(
         object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
-                    changeCity(query.removePrefix(" ").removeSuffix(" ").lowercase())
+                    changeCity(query.removePrefix(" ").removeSuffix(" "))
                     searchView.setQuery("", false)
                     searchView.clearFocus()
                     return false
@@ -67,7 +68,7 @@ class SearchScreenViewModel(
         }
     }
 
-    fun onCityListChanged(list: List<City?>, adapter: RecentlySearchedCitiesAdapter) {
+    fun onCityListChanged(list: List<City?>, adapter: CityAdapter) {
         adapter.cityList = list
         adapter.notifyDataSetChanged()
     }

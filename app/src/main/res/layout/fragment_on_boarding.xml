@@ -8,14 +8,14 @@
     android:orientation="vertical"
     android:paddingHorizontal="30dp"
     android:paddingVertical="50dp"
-    tools:context=".presentation.fragments.OnBoardingFragment">
+    tools:context=".presentation.firstStartScreens.onBoarding.OnBoardingFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:text="Welcome to weatherApp!"
+        android:text="Welcome to WeatherApp!"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp" />
@@ -51,7 +51,7 @@
         android:textSize="18sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recently_searched_cities"
+        android:id="@+id/list_of_cities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

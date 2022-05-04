@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.viewModels
+package com.example.weatherapp.presentation.mainScreens.settingsScreen
 
 import androidx.lifecycle.ViewModel
 

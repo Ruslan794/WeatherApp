@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.viewModels
+package com.example.weatherapp.presentation.mainScreens.homeScreen
 
 import android.util.Log
 import androidx.lifecycle.LiveData

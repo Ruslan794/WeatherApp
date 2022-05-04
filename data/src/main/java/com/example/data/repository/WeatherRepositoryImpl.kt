@@ -88,8 +88,7 @@ class WeatherRepositoryImpl(
         return withContext(Dispatchers.IO) {
             val databaseValue = database.getCityByName(cityName)
             when {
-                (cachedCityData?.name?.lowercase() == cityName) -> 0
-
+                (cachedCityData?.name?.lowercase() == cityName) -> 1
 
                 (databaseValue?.lowercaseName == cityName) -> {
                     val value = City(
@@ -102,24 +101,27 @@ class WeatherRepositoryImpl(
                         database.insertCity(dataFormatter.convertCityToCityItem(value))
                     }
                     cachedCityData = value
-                    1
+                    2
                 }
 
                 else -> {
                     val apiData = cityApi.getCityInfoByName(cityName)
-                    if (apiData.isEmpty()) -1
-                    else {
-                        val value = City(
-                            apiData[0].name,
-                            apiData[0].country,
-                            apiData[0].latitude,
-                            apiData[0].longitude
-                        )
-                        withContext(Dispatchers.IO) {
-                            database.insertCity(dataFormatter.convertCityToCityItem(value))
+                    when {
+                        apiData == null -> 0
+                        apiData.isEmpty() -> -1
+                        else -> {
+                            val value = City(
+                                apiData[0].name,
+                                apiData[0].country,
+                                apiData[0].latitude,
+                                apiData[0].longitude
+                            )
+                            withContext(Dispatchers.IO) {
+                                database.insertCity(dataFormatter.convertCityToCityItem(value))
+                            }
+                            cachedCityData = value
+                            2
                         }
-                        cachedCityData = value
-                        1
                     }
                 }
             }

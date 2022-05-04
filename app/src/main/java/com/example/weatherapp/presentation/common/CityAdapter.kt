@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.adapters
+package com.example.weatherapp.presentation.common
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.City
 import com.example.weatherapp.R
 
-class RecentlySearchedCitiesAdapter(
+class CityAdapter(
     context: Context,
-    var cityList: List<City?>
-) : RecyclerView.Adapter<RecentlySearchedCitiesAdapter.BaseViewHolder>() {
+    var cityList: List<City?>,
+    val clickListener: CityListClickListener
+) : RecyclerView.Adapter<CityAdapter.BaseViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -46,6 +47,7 @@ class RecentlySearchedCitiesAdapter(
 
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+         holder.itemView.setOnClickListener { clickListener.onClick(getItem(position)!!) }
         holder.bind(getItem(position))
     }
 

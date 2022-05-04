@@ -9,6 +9,6 @@
     android:paddingVertical="5dp"
     android:overScrollMode="ifContentScrolls"
     android:scrollbars="none"
-    tools:context=".presentation.fragments.DailyForecastFragment">
+    tools:context=".presentation.mainScreens.dailyForecastScreen.DailyForecastFragment">
 
 </androidx.recyclerview.widget.RecyclerView>

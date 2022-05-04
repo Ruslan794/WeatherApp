@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.fragments
+package com.example.weatherapp.presentation.firstStartScreens.loadingScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.weatherapp.R
-import com.example.weatherapp.presentation.viewModels.LoadingScreenViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoadingScreenFragment : Fragment() {

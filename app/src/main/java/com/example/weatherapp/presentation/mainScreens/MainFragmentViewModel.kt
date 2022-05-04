@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.viewModels
+package com.example.weatherapp.presentation.mainScreens
 
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
