@@ -14,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
 
-   private val viewModel by viewModel<MainFragmentViewModel>()
+    private val viewModel by viewModel<MainFragmentViewModel>()
 
 
     override fun onCreateView(
@@ -24,6 +24,7 @@ class MainFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
         val backButton = view.findViewById<ImageView>(R.id.back_button)
+        val helpButton = view.findViewById<ImageView>(R.id.help_button)
         val currentScreenTitle = view.findViewById<TextView>(R.id.current_screen_title)
         val bottomNavigationView =
             view.findViewById<BottomNavigationView>(R.id.bottom_navigation_menu)
@@ -33,7 +34,7 @@ class MainFragment : Fragment() {
         viewModel.currentScreenTitle.observe(viewLifecycleOwner) { currentScreenTitle.text = it }
 
         backButton.setOnClickListener {
-            viewModel.onBackButtonClicked( childFragmentManager)
+            viewModel.onBackButtonClicked(childFragmentManager)
         }
 
         return view

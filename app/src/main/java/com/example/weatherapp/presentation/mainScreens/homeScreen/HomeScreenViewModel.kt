@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.domain.models.City
 import com.example.domain.models.DayWeatherExtendedItem
 import com.example.domain.useCases.GetCurrentCityUseCase
@@ -140,6 +141,13 @@ class HomeScreenViewModel(
         }
     }
 
+    fun onRefresh(swipeRefreshLayout: SwipeRefreshLayout) {
+        viewModelScope.launch {
+            if (todayTabActive.value!!) updateData(getCurrentDayWeather())
+            else updateData(getTomorrowDayWeather())
+            swipeRefreshLayout.isRefreshing = false
+        }
+    }
 
     private fun editDataFormat(unformattedDate: Long, mode: Int): String {
         return when (mode) {

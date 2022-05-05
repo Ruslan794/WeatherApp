@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.domain.models.City
 import com.example.domain.models.DayWeatherItem
 import com.example.domain.useCases.GetCurrentCityUseCase
@@ -37,6 +38,13 @@ class DailyForecastViewModel(
             val result = showDailyForecastUseCase.execute(_currentCity.value!!)
             if (result.isEmpty()) _showConnectionErrorToast.value = true
             else _weatherDataList.value = result
+        }
+    }
+
+    fun onRefresh(swipeRefreshLayout: SwipeRefreshLayout) {
+        viewModelScope.launch {
+            updateData()
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 

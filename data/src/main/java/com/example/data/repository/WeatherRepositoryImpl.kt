@@ -100,6 +100,9 @@ class WeatherRepositoryImpl(
                     withContext(Dispatchers.IO) {
                         database.insertCity(dataFormatter.convertCityToCityItem(value))
                     }
+                    withContext(Dispatchers.IO) {
+                        getWeatherData(value)
+                    }
                     cachedCityData = value
                     2
                 }
@@ -118,6 +121,9 @@ class WeatherRepositoryImpl(
                             )
                             withContext(Dispatchers.IO) {
                                 database.insertCity(dataFormatter.convertCityToCityItem(value))
+                            }
+                            withContext(Dispatchers.IO) {
+                                getWeatherData(value)
                             }
                             cachedCityData = value
                             2
@@ -183,10 +189,16 @@ class WeatherRepositoryImpl(
                 }
 
                 (databaseValue == null || (currentDate - databaseValue.date >= 3600)) -> {
+
+                    if (databaseValue != null && currentDate - databaseValue.date >= 3600) withContext(
+                        Dispatchers.IO
+                    )
+                    { database.deleteWeatherItemById(databaseValue.id!!) }
+
                     val apiData = weatherApi.getWeatherData(
                         dataFormatter.convertCityToCityCoordinates(city)
                     )
-                    if (apiData == null) return@withContext null
+                    return@withContext if (apiData == null) null
                     else {
                         withContext(Dispatchers.IO) { cacheWeatherData(null, apiData, city.name) }
                         withContext(Dispatchers.IO) {
@@ -208,7 +220,7 @@ class WeatherRepositoryImpl(
                                 )
                             )
                         }
-                        return@withContext CachedWeatherData(
+                        CachedWeatherData(
                             city.name,
                             apiData.hourly[0].dt,
                             dataFormatter.convertCurrentWeatherToCachedDailyWeatherItem(

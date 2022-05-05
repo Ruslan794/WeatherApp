@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingHorizontal="30dp"
     android:paddingVertical="50dp"
-    tools:context=".presentation.firstStartScreens.onBoarding.OnBoardingFragment">
+    tools:context=".presentation.onBoarding.OnBoardingFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"

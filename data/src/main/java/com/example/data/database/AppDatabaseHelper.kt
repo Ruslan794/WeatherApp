@@ -27,4 +27,6 @@ class AppDatabaseHelper(private val db: AppDatabase) {
         db.weatherDao().getWeatherByCityName(cityName)
 
     fun insertWeatherData(data: WeatherData) = db.weatherDao().insertWeatherData(data)
+
+    fun deleteWeatherItemById(id: Long) = db.weatherDao().deleteWeatherItemById(id)
 }

@@ -48,7 +48,7 @@ dependencies {
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-core:$koin_version"
 
-    def lifecycle_version = "2.5.0-alpha06"
+    def lifecycle_version = "2.5.0-beta01"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
@@ -59,4 +59,6 @@ dependencies {
     def navigationVersion = "2.4.2"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

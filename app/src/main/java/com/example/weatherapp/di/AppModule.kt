@@ -13,10 +13,10 @@ import com.example.weatherapp.presentation.mainScreens.dailyForecastScreen.Daily
 import com.example.weatherapp.presentation.mainScreens.dailyForecastScreen.DailyForecastViewModel
 import com.example.weatherapp.presentation.mainScreens.homeScreen.HomeScreenFragment
 import com.example.weatherapp.presentation.mainScreens.homeScreen.HomeScreenViewModel
-import com.example.weatherapp.presentation.firstStartScreens.loadingScreen.LoadingScreenFragment
-import com.example.weatherapp.presentation.firstStartScreens.loadingScreen.LoadingScreenViewModel
-import com.example.weatherapp.presentation.firstStartScreens.onBoarding.OnBoardingFragment
-import com.example.weatherapp.presentation.firstStartScreens.onBoarding.OnBoardingViewModel
+import com.example.weatherapp.presentation.loadingScreen.LoadingScreenFragment
+import com.example.weatherapp.presentation.loadingScreen.LoadingScreenViewModel
+import com.example.weatherapp.presentation.onBoarding.OnBoardingFragment
+import com.example.weatherapp.presentation.onBoarding.OnBoardingViewModel
 import com.example.weatherapp.presentation.mainScreens.searchScreen.SearchScreenFragment
 import com.example.weatherapp.presentation.mainScreens.searchScreen.SearchScreenViewModel
 import com.example.weatherapp.presentation.mainScreens.settingsScreen.SettingsScreenFragment

@@ -169,9 +169,9 @@ class DataFormatter {
         while (i != 7) {
             list.add(
                 DayWeatherItem(
-                    data.daily[0].date,
-                    data.daily[0].eveTemperature,
-                    data.daily[0].icon
+                    data.daily[i].date,
+                    data.daily[i].eveTemperature,
+                    data.daily[i].icon
                 )
             )
             i++

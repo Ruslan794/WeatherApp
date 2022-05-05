@@ -13,9 +13,6 @@ interface WeatherDao {
     @Query("SELECT * FROM weather")
     fun getAllWeatherItem(): List<WeatherData>
 
-//    @Query("SELECT * FROM weather ORDER BY id DESC LIMIT 1")
-//    fun getLastWeatherData(): WeatherData?
-
     @Query("SELECT * FROM weather WHERE city_name=:cityName ORDER BY id DESC LIMIT 1")
     fun getWeatherByCityName(cityName: String): WeatherData?
 

@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.firstStartScreens.loadingScreen
+package com.example.weatherapp.presentation.loadingScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater

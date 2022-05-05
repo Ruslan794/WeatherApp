@@ -9,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import coil.load
 import com.example.weatherapp.R
 import org.koin.android.ext.android.get
@@ -47,6 +48,10 @@ class HomeScreenFragment : Fragment() {
 
         val todayTab = view.findViewById<RadioButton>(R.id.today_tab)
         val tomorrowTab = view.findViewById<RadioButton>(R.id.tomorrow_tab)
+
+        val swipeRefresh = view.findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
+
+        swipeRefresh.setOnRefreshListener { viewModel.onRefresh(swipeRefresh) }
 
         viewModel.todayTabActive.observe(viewLifecycleOwner) { todayTab.isChecked = it }
         viewModel.tomorrowTabActive.observe(viewLifecycleOwner) { tomorrowTab.isChecked = it }

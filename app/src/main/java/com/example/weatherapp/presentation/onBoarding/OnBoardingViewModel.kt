@@ -1,4 +1,4 @@
-package com.example.weatherapp.presentation.firstStartScreens.onBoarding
+package com.example.weatherapp.presentation.onBoarding
 
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.domain.models.DayWeatherItem
 import com.example.weatherapp.R
 import com.example.weatherapp.di.KoinConstants
@@ -33,6 +34,10 @@ class DailyForecastFragment : Fragment() {
         val linearLayoutManager: LinearLayoutManager = get(named(KoinConstants.VERTICAL))
 
         val dailyWeatherList = view.findViewById<RecyclerView>(R.id.daily_weather_list)
+
+        val swipeRefresh = view.findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
+
+        swipeRefresh.setOnRefreshListener { viewModel.onRefresh(swipeRefresh) }
 
         viewModel.weatherDataList.observe(viewLifecycleOwner) {
             viewModel.onWeatherChanged(it, adapter)
