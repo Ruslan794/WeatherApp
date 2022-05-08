@@ -102,9 +102,8 @@ class DataFormatter {
 
         ): List<CachedDailyWeatherItem> {
         val list = mutableListOf<CachedDailyWeatherItem>()
-        val cutDailyList = dailyList.subList(0, 6)
         var i = 3
-        cutDailyList.forEach {
+        dailyList.forEach {
             val sublist = mutableListOf<CachedHourlyWeatherItem>()
             hourlyList.subList(i - 3, i).forEach { item ->
                 sublist.add(
@@ -164,17 +163,15 @@ class DataFormatter {
     fun convertCachedWeatherDataToListOfDayWeatherItems(
         data: CachedWeatherData
     ): List<DayWeatherItem> {
-        var i = 0
         val list: MutableList<DayWeatherItem> = mutableListOf()
-        while (i != 7) {
+        data.daily.subList(0,7).forEach {
             list.add(
                 DayWeatherItem(
-                    data.daily[i].date,
-                    data.daily[i].eveTemperature,
-                    data.daily[i].icon
+                    it.date,
+                    it.eveTemperature,
+                    it.icon
                 )
             )
-            i++
         }
         return list
     }

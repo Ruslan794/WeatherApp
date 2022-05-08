@@ -10,31 +10,37 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.domain.models.DayWeatherItem
 import com.example.weatherapp.R
+import com.example.weatherapp.presentation.common.WeatherIconsProvider
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class DailyWeatherAdapter(
     context: Context,
-    var weatherList: List<DayWeatherItem>
+    var weatherList: List<DayWeatherItem?>,
+    private val iconsProvider: WeatherIconsProvider
 ) : RecyclerView.Adapter<DailyWeatherAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun getItemCount(): Int = weatherList.size
 
-    private fun getItem(position: Int): DayWeatherItem = weatherList[position]
+    private fun getItem(position: Int): DayWeatherItem? = weatherList[position]
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(inflater.inflate(R.layout.daily_weather_view_holder, parent, false))
+        ViewHolder(
+            inflater.inflate(R.layout.daily_weather_view_holder, parent, false),
+            iconsProvider
+        )
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (weatherList.isNotEmpty()) holder.bind(getItem(position))
+        if (!weatherList.contains(null)) holder.bind(getItem(position)!!)
         else holder.bindWithoutData()
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, private val iconsProvider: WeatherIconsProvider) :
+        RecyclerView.ViewHolder(view) {
 
         private val temperature: TextView = itemView.findViewById(R.id.temperature)
         private val day: TextView = itemView.findViewById(R.id.day)
@@ -42,17 +48,18 @@ class DailyWeatherAdapter(
         private val icon: ImageView = itemView.findViewById(R.id.daily_weather_icon)
 
         fun bind(weatherItem: DayWeatherItem) {
-            temperature.text = weatherItem.temperature.toInt().toString() + "\u00B0"
+            temperature.text = weatherItem.temperature.toString().plus("\u00B0")
+            temperature.background.alpha = 0
             day.text = editDataFormat(weatherItem.date, 0)
+            day.background.alpha = 0
             date.text = editDataFormat(weatherItem.date, 1)
-            icon.load("https://openweathermap.org/img/wn/${weatherItem.icon}@2x.png")
+            date.background.alpha = 0
+            icon.scaleX = 1.8f
+            icon.scaleY = 1.8f
+            icon.load(iconsProvider.getIconByCode(weatherItem.icon))
         }
 
-        fun bindWithoutData() {
-            temperature.text = "---" + "\u00B0"
-            day.text = "---"
-            date.text = "-----"
-        }
+        fun bindWithoutData() {}
 
         private fun editDataFormat(unformattedDate: Long, mode: Int): String {
             return when (mode) {

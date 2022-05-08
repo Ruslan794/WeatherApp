@@ -11,6 +11,7 @@ import com.example.domain.models.DayWeatherExtendedItem
 import com.example.domain.useCases.GetCurrentCityUseCase
 import com.example.domain.useCases.ShowCurrentDayWeatherUseCase
 import com.example.domain.useCases.ShowTomorrowDayWeatherUseCase
+import com.example.weatherapp.presentation.common.WeatherIconsProvider
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,7 +20,8 @@ import java.util.*
 class HomeScreenViewModel(
     private val showCurrentDayWeatherUseCase: ShowCurrentDayWeatherUseCase,
     private val showTomorrowDayWeatherUseCase: ShowTomorrowDayWeatherUseCase,
-    private val getCurrentCityUseCase: GetCurrentCityUseCase
+    private val getCurrentCityUseCase: GetCurrentCityUseCase,
+    private val iconsProvider: WeatherIconsProvider
 ) :
     ViewModel() {
 
@@ -28,14 +30,14 @@ class HomeScreenViewModel(
 
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
-    private val _temperature = MutableLiveData<Int>()
-    val temperature: LiveData<Int> = _temperature
-    private val _windSpeed = MutableLiveData<Int>()
-    val windSpeed: LiveData<Int> = _windSpeed
-    private val _humidity = MutableLiveData<Int>()
-    val humidity: LiveData<Int> = _humidity
-    private val _minTemperature = MutableLiveData<Int>()
-    val minTemperature: LiveData<Int> = _minTemperature
+    private val _temperature = MutableLiveData<String>()
+    val temperature: LiveData<String> = _temperature
+    private val _windSpeed = MutableLiveData<String>()
+    val windSpeed: LiveData<String> = _windSpeed
+    private val _humidity = MutableLiveData<String>()
+    val humidity: LiveData<String> = _humidity
+    private val _minTemperature = MutableLiveData<String>()
+    val minTemperature: LiveData<String> = _minTemperature
     private val _city = MutableLiveData<String>()
     val city: LiveData<String> = _city
     private val _weatherInOneWord = MutableLiveData<String>()
@@ -99,16 +101,19 @@ class HomeScreenViewModel(
         }
 
         _date.value = editDataFormat(weatherData.date, 0)
-        _temperature.value = weatherData.temperature
-        _windSpeed.value = weatherData.windSpeed
-        _humidity.value = weatherData.humidity
-        _minTemperature.value = weatherData.minTemperature
+        _temperature.value = weatherData.temperature.toString().plus("\u00B0")
+        _windSpeed.value = weatherData.windSpeed.toString().plus(" km/h")
+        _humidity.value = weatherData.humidity.toString().plus("%")
+        _minTemperature.value = weatherData.minTemperature.toString().plus("\u00B0")
         _weatherInOneWord.value = weatherData.weatherInOneWord
         _icon.value = weatherData.icon
 
-        _hourlyTemperatureFirst.value = weatherData.hourlyWeather[0].temperature.toString()
-        _hourlyTemperatureSecond.value = weatherData.hourlyWeather[1].temperature.toString()
-        _hourlyTemperatureThird.value = weatherData.hourlyWeather[2].temperature.toString()
+        _hourlyTemperatureFirst.value =
+            weatherData.hourlyWeather[0].temperature.toString().plus("\u00B0")
+        _hourlyTemperatureSecond.value =
+            weatherData.hourlyWeather[1].temperature.toString().plus("\u00B0")
+        _hourlyTemperatureThird.value =
+            weatherData.hourlyWeather[2].temperature.toString().plus("\u00B0")
         _hourlyTimeFirst.value = editDataFormat(weatherData.hourlyWeather[0].time, 1)
         _hourlyTimeSecond.value = editDataFormat(weatherData.hourlyWeather[1].time, 1)
         _hourlyTimeThird.value = editDataFormat(weatherData.hourlyWeather[2].time, 1)
@@ -167,4 +172,5 @@ class HomeScreenViewModel(
         }
     }
 
+    fun getIcon(code: String): Int? = iconsProvider.getIconByCode(code = code)
 }

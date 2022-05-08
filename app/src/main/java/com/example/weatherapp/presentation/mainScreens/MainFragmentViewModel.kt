@@ -39,7 +39,6 @@ class MainFragmentViewModel : ViewModel() {
         val navController =
             (childFragmentManager.findFragmentById(R.id.main_fragment_container) as NavHostFragment).navController
         bottomNavigationView.setupWithNavController(navController)
-        bottomNavigationView
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.homeScreenFragment -> {

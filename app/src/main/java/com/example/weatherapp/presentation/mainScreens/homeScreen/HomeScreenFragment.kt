@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import coil.load
@@ -59,36 +60,63 @@ class HomeScreenFragment : Fragment() {
         todayTab.setOnClickListener { viewModel.onTodayTabClicked() }
         tomorrowTab.setOnClickListener { viewModel.onTomorrowTabClicked() }
 
-        viewModel.date.observe(viewLifecycleOwner) { date.text = it }
-        viewModel.temperature.observe(viewLifecycleOwner) { temperature.text = "$it" + "\u00B0" }
-        viewModel.windSpeed.observe(viewLifecycleOwner) { windSpeed.text = "$it km/h" }
-        viewModel.humidity.observe(viewLifecycleOwner) { humidity.text = "$it%" }
-        viewModel.minTemperature.observe(viewLifecycleOwner) {
-            minTemperature.text = "$it" + "\u00B0"
+        viewModel.temperature.observe(viewLifecycleOwner) {
+            temperature.text = it; temperature.background.alpha = 0
         }
-        viewModel.date.observe(viewLifecycleOwner) { date.text = it }
-        viewModel.city.observe(viewLifecycleOwner) { city.text = it }
+        viewModel.windSpeed.observe(viewLifecycleOwner) {
+            windSpeed.text = it; windSpeed.background.alpha = 0
+        }
+        viewModel.humidity.observe(viewLifecycleOwner) {
+            humidity.text = it; humidity.background.alpha = 0
+        }
+        viewModel.minTemperature.observe(viewLifecycleOwner) {
+            minTemperature.text = it; minTemperature.background.alpha = 0
+        }
+        viewModel.date.observe(viewLifecycleOwner) { date.text = it; date.background.alpha = 0 }
+        viewModel.city.observe(viewLifecycleOwner) {
+            city.text = it
+            city.background.alpha = 0
+            val img =
+                ResourcesCompat.getDrawable(resources, R.drawable.place_icon, resources.newTheme())
+            img?.setBounds(0, 0, 60, 60)
+            city.setCompoundDrawables(img, null, null, null)
+        }
         viewModel.weatherInOneWord.observe(viewLifecycleOwner) { weatherInOneWord.text = it }
-        viewModel.icon.observe(viewLifecycleOwner) { icon.load("https://openweathermap.org/img/wn/${it}@2x.png") }
+        viewModel.icon.observe(viewLifecycleOwner) {
+            icon.load("https://openweathermap.org/img/wn/${it}@2x.png")
+            icon.scaleX = 1.8f
+            icon.scaleY = 1.8f
+        }
 
 
 
         viewModel.hourlyTemperatureFirst.observe(viewLifecycleOwner) {
-            hourlyTemperatureFirst.text = it + "\u00B0"
+            hourlyTemperatureFirst.text = it; hourlyTemperatureFirst.background.alpha = 0
         }
         viewModel.hourlyTemperatureSecond.observe(viewLifecycleOwner) {
-            hourlyTemperatureSecond.text = it + "\u00B0"
+            hourlyTemperatureSecond.text = it; hourlyTemperatureSecond.background.alpha = 0
         }
         viewModel.hourlyTemperatureThird.observe(viewLifecycleOwner) {
-            hourlyTemperatureThird.text = it + "\u00B0"
+            hourlyTemperatureThird.text = it; hourlyTemperatureThird.background.alpha = 0
         }
-        viewModel.hourlyTimeFirst.observe(viewLifecycleOwner) { hourlyTimeOne.text = it }
-        viewModel.hourlyTimeSecond.observe(viewLifecycleOwner) { hourlyTimeSecond.text = it }
-        viewModel.hourlyTimeThird.observe(viewLifecycleOwner) { hourlyTimeThird.text = it }
-        viewModel.hourlyIconOne.observe(viewLifecycleOwner) { hourlyIconOne.load("https://openweathermap.org/img/wn/${it}@2x.png") }
-        viewModel.hourlyIconTwo.observe(viewLifecycleOwner) { hourlyIconTwo.load("https://openweathermap.org/img/wn/${it}@2x.png") }
-        viewModel.hourlyIconThree.observe(viewLifecycleOwner) { hourlyIconThree.load("https://openweathermap.org/img/wn/${it}@2x.png") }
-
+        viewModel.hourlyTimeFirst.observe(viewLifecycleOwner) {
+            hourlyTimeOne.text = it; hourlyTimeOne.background.alpha = 0
+        }
+        viewModel.hourlyTimeSecond.observe(viewLifecycleOwner) {
+            hourlyTimeSecond.text = it; hourlyTimeSecond.background.alpha = 0
+        }
+        viewModel.hourlyTimeThird.observe(viewLifecycleOwner) {
+            hourlyTimeThird.text = it; hourlyTimeThird.background.alpha = 0
+        }
+        viewModel.hourlyIconOne.observe(viewLifecycleOwner) {
+            loadImageToHourlyItem(hourlyIconOne, it)
+        }
+        viewModel.hourlyIconTwo.observe(viewLifecycleOwner) {
+            loadImageToHourlyItem(hourlyIconTwo, it)
+        }
+        viewModel.hourlyIconThree.observe(viewLifecycleOwner) {
+            loadImageToHourlyItem(hourlyIconThree, it)
+        }
         viewModel.showConnectionErrorToast.observe(viewLifecycleOwner) {
             Toast.makeText(
                 get(),
@@ -98,6 +126,13 @@ class HomeScreenFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun loadImageToHourlyItem(view: ImageView, path: String) {
+        view.scaleType = ImageView.ScaleType.CENTER_CROP
+        view.scaleX = 1.3f
+        view.scaleY = 1.3f
+        view.load(viewModel.getIcon(path))
     }
 }
 

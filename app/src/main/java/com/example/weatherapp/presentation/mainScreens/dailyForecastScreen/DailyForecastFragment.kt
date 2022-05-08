@@ -29,7 +29,7 @@ class DailyForecastFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_daily_forecast, container, false)
 
-        val weatherDataList = listOf<DayWeatherItem>()
+        val weatherDataList = listOf<DayWeatherItem?>(null,null,null,null,null,null,null)
         val adapter: DailyWeatherAdapter = get { parametersOf(weatherDataList) }
         val linearLayoutManager: LinearLayoutManager = get(named(KoinConstants.VERTICAL))
 
