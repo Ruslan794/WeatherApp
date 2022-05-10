@@ -9,4 +9,11 @@
     <string name="humidity_parameter_title">Humidity</string>
     <string name="low_temperature_parameter_title">Low</string>
     <string name="hourly_forecast_block_title">Hourly Forecast</string>
+    <string name="empty_list_value">Nothing here yet :)</string>
+    <string name="loading">Loading...</string>
+    <string name="onBoarding_welcome">Welcome to WeatherApp!</string>
+    <string name="before_start">Before we start enter your city:</string>
+    <string name="choose_city">Our choose city from list below:</string>
+    <string name="search_screen_header">Find the city whose weather you want to know</string>
+    <string name="recently_searched">Recently searched:</string>
 </resources>

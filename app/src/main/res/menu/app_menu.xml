@@ -3,23 +3,17 @@
     <item
         android:id="@+id/homeScreenFragment"
         android:icon="@drawable/ic_filled_home"
-        android:title="Home"
-        />
+        android:title="Home" />
 
     <item
         android:id="@+id/searchScreenFragment"
         android:icon="@drawable/ic_outline_search"
-        android:title="Search"/>
+        android:title="Search" />
 
     <item
         android:id="@+id/dailyForecastFragment"
         android:icon="@drawable/ic_baseline_calendar"
         android:title="Daily" />
-
-    <item
-        android:id="@+id/settingsScreenFragment"
-        android:icon="@drawable/ic_baseline_settings_grey"
-        android:title="Settings" />
 
 </menu>
 

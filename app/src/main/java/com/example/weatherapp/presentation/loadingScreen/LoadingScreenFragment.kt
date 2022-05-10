@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.weatherapp.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 class LoadingScreenFragment : Fragment() {
 
     private val viewModel by viewModel<LoadingScreenViewModel>()

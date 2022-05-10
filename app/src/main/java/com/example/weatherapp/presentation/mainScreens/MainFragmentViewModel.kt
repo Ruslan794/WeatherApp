@@ -27,7 +27,6 @@ class MainFragmentViewModel : ViewModel() {
             R.id.homeScreenFragment -> "Weather"
             R.id.searchScreenFragment -> "Search"
             R.id.dailyForecastFragment -> "Daily Forecast"
-            R.id.settingsScreenFragment -> "Settings"
             else -> "Error"
         }
     }
@@ -54,11 +53,6 @@ class MainFragmentViewModel : ViewModel() {
                 R.id.dailyForecastFragment -> {
                     if (!item.isChecked) navController.navigate(R.id.dailyForecastFragment)
                     _currentScreenTitle.value = "Daily Forecast"
-                    return@setOnItemSelectedListener true
-                }
-                R.id.settingsScreenFragment -> {
-                    if (!item.isChecked) navController.navigate(R.id.settingsScreenFragment)
-                    _currentScreenTitle.value = "Settings"
                     return@setOnItemSelectedListener true
                 }
             }

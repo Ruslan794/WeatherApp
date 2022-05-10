@@ -18,8 +18,6 @@ import com.example.weatherapp.presentation.mainScreens.homeScreen.HomeScreenFrag
 import com.example.weatherapp.presentation.mainScreens.homeScreen.HomeScreenViewModel
 import com.example.weatherapp.presentation.mainScreens.searchScreen.SearchScreenFragment
 import com.example.weatherapp.presentation.mainScreens.searchScreen.SearchScreenViewModel
-import com.example.weatherapp.presentation.mainScreens.settingsScreen.SettingsScreenFragment
-import com.example.weatherapp.presentation.mainScreens.settingsScreen.SettingsScreenViewModel
 import com.example.weatherapp.presentation.onBoarding.OnBoardingFragment
 import com.example.weatherapp.presentation.onBoarding.OnBoardingViewModel
 import org.koin.androidx.fragment.dsl.fragment
@@ -33,7 +31,6 @@ val appModule = module {
     fragment { DailyForecastFragment() }
     fragment { MainFragment() }
     fragment { SearchScreenFragment() }
-    fragment { SettingsScreenFragment() }
     fragment { LoadingScreenFragment() }
     fragment { OnBoardingFragment() }
 
@@ -61,7 +58,6 @@ val appModule = module {
             getRecentlySearchedCitiesUseCase = get()
         )
     }
-    viewModel { SettingsScreenViewModel() }
     viewModel { LoadingScreenViewModel(loadWeatherDataUseCase = get()) }
 
     single { (list: List<DayWeatherItem>) ->

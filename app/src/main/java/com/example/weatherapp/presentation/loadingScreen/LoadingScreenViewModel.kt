@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.useCases.LoadWeatherDataUseCase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoadingScreenViewModel(

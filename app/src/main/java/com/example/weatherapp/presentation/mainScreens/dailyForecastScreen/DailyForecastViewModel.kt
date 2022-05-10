@@ -1,5 +1,6 @@
 package com.example.weatherapp.presentation.mainScreens.dailyForecastScreen
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -48,6 +49,7 @@ class DailyForecastViewModel(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun onWeatherChanged(list: List<DayWeatherItem>, adapter: DailyWeatherAdapter) {
         adapter.weatherList = list
         adapter.notifyDataSetChanged()

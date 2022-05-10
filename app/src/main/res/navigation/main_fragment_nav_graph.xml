@@ -5,32 +5,25 @@
     android:id="@+id/nav_graph_app"
     app:startDestination="@id/homeScreenFragment">
 
-
     <fragment
         android:id="@+id/homeScreenFragment"
         android:name="com.example.weatherapp.presentation.mainScreens.homeScreen.HomeScreenFragment"
-        android:label="HomeScreenFragment" >
+        android:label="HomeScreenFragment">
         <action
             android:id="@+id/action_homeScreenFragment_to_dailyForecastFragment"
-            app:destination="@id/dailyForecastFragment"/>
+            app:destination="@id/dailyForecastFragment" />
         <action
             android:id="@+id/action_homeScreenFragment_to_searchScreenFragment"
             app:destination="@id/searchScreenFragment" />
-        <action
-            android:id="@+id/action_homeScreenFragment_to_settingsScreenFragment"
-            app:destination="@id/settingsScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/dailyForecastFragment"
         android:name="com.example.weatherapp.presentation.mainScreens.dailyForecastScreen.DailyForecastFragment"
         android:label="fragment_daily_forecast"
-        tools:layout="@layout/fragment_daily_forecast" >
+        tools:layout="@layout/fragment_daily_forecast">
         <action
             android:id="@+id/action_dailyForecastFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
-        <action
-            android:id="@+id/action_dailyForecastFragment_to_settingsScreenFragment"
-            app:destination="@id/settingsScreenFragment" />
         <action
             android:id="@+id/action_dailyForecastFragment_to_searchScreenFragment"
             app:destination="@id/searchScreenFragment" />
@@ -39,30 +32,12 @@
         android:id="@+id/searchScreenFragment"
         android:name="com.example.weatherapp.presentation.mainScreens.searchScreen.SearchScreenFragment"
         android:label="fragment_search_screen"
-        tools:layout="@layout/fragment_search_screen" >
+        tools:layout="@layout/fragment_search_screen">
         <action
             android:id="@+id/action_searchScreenFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
         <action
-            android:id="@+id/action_searchScreenFragment_to_settingsScreenFragment"
-            app:destination="@id/settingsScreenFragment" />
-        <action
             android:id="@+id/action_searchScreenFragment_to_dailyForecastFragment"
-            app:destination="@id/dailyForecastFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsScreenFragment"
-        android:name="com.example.weatherapp.presentation.mainScreens.settingsScreen.SettingsScreenFragment"
-        android:label="fragment_settings_screen"
-        tools:layout="@layout/fragment_settings_screen" >
-        <action
-            android:id="@+id/action_settingsScreenFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
-        <action
-            android:id="@+id/action_settingsScreenFragment_to_searchScreenFragment"
-            app:destination="@id/searchScreenFragment" />
-        <action
-            android:id="@+id/action_settingsScreenFragment_to_dailyForecastFragment"
             app:destination="@id/dailyForecastFragment" />
     </fragment>
 </navigation>

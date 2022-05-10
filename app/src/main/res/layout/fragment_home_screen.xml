@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
@@ -20,7 +19,6 @@
             android:orientation="vertical"
             tools:context=".presentation.mainScreens.homeScreen.HomeScreenFragment">
 
-
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -29,7 +27,7 @@
                 android:background="@drawable/radio_group_switcher_style"
                 android:orientation="horizontal">
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/today_tab"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -43,7 +41,7 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <RadioButton
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:id="@+id/tomorrow_tab"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -58,7 +56,7 @@
                     android:textStyle="bold" />
             </RadioGroup>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,9 +67,9 @@
                 android:minWidth="100dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,36 +80,35 @@
                 android:textColor="@color/grey_1"
                 android:textSize="14sp" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/main_icon"
                 android:layout_width="match_parent"
                 android:layout_height="76dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="50dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/image_place_holder"
-                tools:ignore="ContentDescription" />
+                android:src="@drawable/image_place_holder" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textAlignment="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/place_holder"
                 android:minWidth="60dp"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="40sp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/weather_in_one_word"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/grey_rectangle"
+                android:minWidth="100dp"
                 android:paddingHorizontal="30dp"
                 android:paddingVertical="8dp"
                 android:textColor="@color/white"
@@ -132,7 +129,7 @@
                     android:layout_weight="3"
                     android:orientation="vertical">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/wind_parameter_title"
@@ -140,14 +137,14 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/wind_speed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:minWidth="90dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="90dp"
                         android:textAlignment="center"
                         android:textColor="@color/grey_1"
                         android:textSize="16sp" />
@@ -167,7 +164,7 @@
                     android:layout_weight="3"
                     android:orientation="vertical">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/humidity_parameter_title"
@@ -175,14 +172,14 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/humidity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:minWidth="80dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="80dp"
                         android:textAlignment="center"
                         android:textColor="@color/grey_1"
                         android:textSize="16sp" />
@@ -201,7 +198,7 @@
                     android:layout_weight="3"
                     android:orientation="vertical">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/low_temperature_parameter_title"
@@ -209,15 +206,15 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
 
                         android:id="@+id/min_temperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:minWidth="80dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="80dp"
                         android:textAlignment="center"
                         android:textColor="@color/grey_1"
                         android:textSize="16sp" />
@@ -232,7 +229,7 @@
                 android:layout_marginTop="25dp"
                 android:background="@color/grey_1" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -257,35 +254,34 @@
                     android:paddingHorizontal="10dp"
                     android:weightSum="6">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/hourly_temp_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginVertical="10dp"
-                        android:textAlignment="center"
-                        android:minWidth="30dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="30dp"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/hourly_icon_1"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="10dp"
-                        android:src="@drawable/image_place_holder"
-                        tools:ignore="ContentDescription" />
+                        android:src="@drawable/image_place_holder" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/hourly_time_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginVertical="20dp"
-                        android:minWidth="70dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="70dp"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -304,36 +300,35 @@
                     android:paddingHorizontal="10dp"
                     android:weightSum="6">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/hourly_temp_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textAlignment="center"
                         android:layout_marginVertical="10dp"
-                        android:minWidth="30dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="30dp"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/hourly_icon_2"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="10dp"
-                        android:src="@drawable/image_place_holder"
-                        tools:ignore="ContentDescription" />
+                        android:src="@drawable/image_place_holder" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/hourly_time_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginVertical="20dp"
 
-                        android:minWidth="60dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="60dp"
                         android:textColor="@color/grey_1"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -352,35 +347,34 @@
                     android:paddingHorizontal="10dp"
                     android:weightSum="6">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/hourly_temp_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textAlignment="center"
                         android:layout_marginVertical="10dp"
-                        android:minWidth="30dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="30dp"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/hourly_icon_3"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="10dp"
-                        android:src="@drawable/image_place_holder"
-                        tools:ignore="ContentDescription" />
+                        android:src="@drawable/image_place_holder" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/hourly_time_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginVertical="20dp"
-                        android:minWidth="60dp"
                         android:background="@drawable/place_holder"
+                        android:minWidth="60dp"
                         android:textColor="@color/grey_1"
                         android:textSize="16sp" />
                 </LinearLayout>

@@ -83,7 +83,7 @@ class HomeScreenFragment : Fragment() {
         }
         viewModel.weatherInOneWord.observe(viewLifecycleOwner) { weatherInOneWord.text = it }
         viewModel.icon.observe(viewLifecycleOwner) {
-            icon.load("https://openweathermap.org/img/wn/${it}@2x.png")
+            icon.load(viewModel.getIcon(it))
             icon.scaleX = 1.8f
             icon.scaleY = 1.8f
         }

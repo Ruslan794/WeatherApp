@@ -172,5 +172,5 @@ class HomeScreenViewModel(
         }
     }
 
-    fun getIcon(code: String): Int? = iconsProvider.getIconByCode(code = code)
+    fun getIcon(code: String): Int = iconsProvider.getIconByCode(code = code)
 }

@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.loadingScreen.LoadingScreenFragment"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".presentation.loadingScreen.LoadingScreenFragment">
 
-    <TextView
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:indeterminateTint="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="@string/loading"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:text="Loading..." />
+        android:textSize="20sp" />
 
-</FrameLayout>
+</LinearLayout>

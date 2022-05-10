@@ -1,5 +1,6 @@
 package com.example.data.repository
 
+import com.example.data.api.models.CityInfo
 import com.example.data.api.models.DailyItem
 import com.example.data.api.models.HourlyItem
 import com.example.data.database.entities.CityItem
@@ -15,8 +16,8 @@ import com.example.domain.models.HourlyWeatherItem
 
 class DataFormatter {
 
-    fun convertCityToCityCoordinates(city: City): com.example.data.api.models.CityInfo {
-        return com.example.data.api.models.CityInfo(
+    fun convertCityToCityCoordinates(city: City): CityInfo {
+        return CityInfo(
             city.name,
             city.latitude,
             city.longitude,
@@ -164,7 +165,7 @@ class DataFormatter {
         data: CachedWeatherData
     ): List<DayWeatherItem> {
         val list: MutableList<DayWeatherItem> = mutableListOf()
-        data.daily.subList(0,7).forEach {
+        data.daily.subList(0, 7).forEach {
             list.add(
                 DayWeatherItem(
                     it.date,
@@ -185,6 +186,4 @@ class DataFormatter {
             city.longitude,
             city.country
         )
-
-
 }
